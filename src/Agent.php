@@ -143,6 +143,8 @@ class Agent extends NipwaayoniAgent
          * worker processes. A future release of the Agent package should handle event
          * collection better and remove the need for this.
          */
-        $this->putEvent(new Metadata($this->getSharedContext(), $this->getConfig(), $this->agentMetadata()));
+        $sharedContext = $this->getSharedContext();
+        if (!is_array($sharedContext)) $sharedContext = $sharedContext->toArray();
+        $this->putEvent(new Metadata($sharedContext, $this->getConfig(), $this->agentMetadata()));
     }
 }
