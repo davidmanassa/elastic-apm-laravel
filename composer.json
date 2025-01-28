@@ -26,7 +26,7 @@
         "illuminate/support": "^10.0|^11.0",
         "illuminate/contracts": "^10.0|^11.0",
         "jasny/persist-sql-query": "^2.0",
-        "nipwaayoni/elastic-apm-php-agent": "^8.0"
+        "davidmanassa/elastic-apm-php-agent": "^1.0"
     },
     "require-dev": {
         "codeception/codeception": "^5",
