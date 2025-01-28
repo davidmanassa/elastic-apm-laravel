@@ -100,9 +100,12 @@ class Agent extends NipwaayoniAgent
 
     public function collectEvents(string $transaction_name): void
     {
+        $sharedContext = $this->getSharedContext();
+        if (!is_array($sharedContext)) $sharedContext = $sharedContext->toArray();
+
         $transaction = $this->getTransaction($transaction_name);
-        $this->collectors->each(function ($collector) use ($transaction) {
-            $collector->collect()->each(function ($measure) use ($transaction) {
+        $this->collectors->each(function ($collector) use ($transaction, $sharedContext) {
+            $collector->collect()->each(function ($measure) use ($transaction, $sharedContext) {
                 $event = $this->factory()->newSpan($measure['label'], $transaction);
                 $event->setType($measure['type']);
                 $event->setAction($measure['action']);
@@ -110,6 +113,7 @@ class Agent extends NipwaayoniAgent
                 $event->setStartOffset($measure['start']);
                 $event->setDuration($measure['duration']);
                 $event->setStacktrace($measure['stacktrace']);
+                $event->setTags($sharedContext['tags']);
 
                 $this->putEvent($event);
             });
