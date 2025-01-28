@@ -1,5 +1,5 @@
 {
-    "name": "arkaitzgarro/elastic-apm-laravel",
+    "name": "davidmanassa/elastic-apm-laravel",
     "description": "Laravel APM agent for Elastic v2 intake API",
     "keywords": [
         "laravel",
@@ -11,6 +11,10 @@
         {
             "name": "Arkaitz Garro",
             "email": "arkaitz.garro@gmail.com"
+        },
+        {
+            "name": "David Pires",
+            "email": "davidmanassa@gmail.com"
         }
     ],
     "require": {
