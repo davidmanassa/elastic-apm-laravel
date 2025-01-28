@@ -107,6 +107,7 @@ class ServiceProvider extends BaseServiceProvider
 
             return $builder
                 ->withConfig(new Config($this->getAgentConfig()))
+                ->withTagData(config('elastic-apm-laravel.globalLabels'))
                 ->withEnvData(config('elastic-apm-laravel.env.env'))
                 ->withAppConfig($this->app->make(Repository::class))
                 ->withEventCollectors(collect($this->app->tagged(self::COLLECTOR_TAG)))

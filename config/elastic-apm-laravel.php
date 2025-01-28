@@ -19,6 +19,10 @@ return [
         'appVersion' => env('APM_APPVERSION', env('ELASTIC_APM_SERVICE_VERSION')),
     ],
 
+    'globalLabels' => [
+        // array of global labels (key => value) that will be attached to all transactions
+    ],
+
     'env' => [
         // whitelist environment variables OR send everything
         'env' => ['DOCUMENT_ROOT', 'REMOTE_ADDR'],
